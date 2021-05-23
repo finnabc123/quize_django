@@ -1,0 +1,130 @@
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js" integrity="sha512-nIwdJlD5/vHj23CbO2iHCXtsqzdTTx3e3uAmpTm4x2Y8xCIFyWu4cSIV8GaGe2UNVq86/1h9EgUZy7tn243qdA==" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link rel="stylesheet" href="./css/hamburgers.min.css">
+</head>
+<style>
+    :root{
+        --primary: #B3241B;
+        --secondary: #E99838;
+    }
+    body{
+        font-family: 'Quicksand';
+    }
+    .bg-primary{
+        background-color: var(--primary);
+    }
+    .text-primary{
+        color: var(--primary);
+    }
+    .text-secondary{
+        color: var(--secondary);
+    }
+    .btn-bg-trans{
+        background-color: rgba(255, 255, 255, 0.27);
+    }
+    .btn-border{
+        border: 3px solid var(--secondary);
+    }
+    .glass {
+        box-shadow: 0 0 16px rgba(0, 0, 0, .05); 
+        background-color: rgba(255, 255, 255, 0.104);    
+        backdrop-filter: blur(3px);
+        text-shadow: 0 0 10px rgba(0, 0, 0, .086);
+    }
+    @media screen and (min-width: 768px){
+        .headText{
+            font-size: 38px;
+            line-height: 38px;
+        }
+    }
+    @media screen and (max-width: 767px){
+        nav{
+            transition: .4s ease;
+        }
+        .nav-collapsed{
+            margin-top: -110%;
+            transition: .4s ease;
+        }
+    }
+    
+</style>
+<body class="bg-gray-50">
+
+    <nav class="absolute mx-auto w-full z-0">
+        <div class="mr-auto px-6 py-6">
+            <a href="{% url 'landing_page' %}"><button class="border border-2 px-4 py-2 shadow-lg rounded-full"><i class="fa fa-2x text-white fa-chevron-left"></i></button></a>
+        </div>
+    </nav>
+
+    <header class="bg-black" style="height: 40vh;">
+        <h1 class="pt-32 font-semibold text-5xl text-white headText text-center">Frequently Answered Questions</h1>
+    </header>
+
+
+    <div class="w-full my-4 lg:px-32 pt-16">
+        <div x-data={show:false} class="rounded-sm">
+            <div class="border border-b-0 bg-gray-100 px-2 text-sm lg:px-10 py-6" id="headingOne">
+                <button @click="show=!show" class="text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                    <i class="fa fa-chevron-down pr-2 lg:pr-4" x-show="show == false"></i>
+                    <i class="fa fa-chevron-up pr-2 lg:pr-4" x-show="show == true"></i>
+                    I made payment but couldnt take the test
+                </button>
+            </div>
+            <div x-show="show" class="border border-b-0 px-4 text-sm lg:px-10 py-6">
+                {% lorem 1 b random %}
+            </div>
+        </div>
+        <div x-data={show:false} class="rounded-sm">
+            <div class="border border-b-0 bg-gray-100 px-2 text-sm lg:px-10 py-6" id="headingOne">
+                <button @click="show=!show" class="text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                    <i class="fa fa-chevron-down pr-2 lg:pr-4" x-show="show == false"></i>
+                    <i class="fa fa-chevron-up pr-2 lg:pr-4" x-show="show == true"></i>
+                    I made payment but couldnt take the test
+                </button>
+            </div>
+            <div x-show="show" class="border border-b-0 px-4 text-sm lg:px-10 py-6">
+                {% lorem 1 b random %}
+                <br>
+                
+                {% lorem 1 b random %}
+            </div>
+        </div>
+        <div x-data={show:false} class="rounded-sm">
+            <div class="border border-b-0 bg-gray-100 px-2 text-sm lg:px-10 py-6" id="headingOne">
+                <button @click="show=!show" class="text-blue-500 hover:text-blue-700 focus:outline-none" type="button">
+                    <i class="fa fa-chevron-down pr-2 lg:pr-4" x-show="show == false"></i>
+                    <i class="fa fa-chevron-up pr-2 lg:pr-4" x-show="show == true"></i>
+                    I made payment but couldnt take the test
+                </button>
+            </div>
+            <div x-show="show" class="border border-b-0 px-4 text-sm lg:px-10 py-6">
+                {% lorem 2 b random %}
+                <br>
+                <br>
+               {% lorem 1 b random %}
+                <br>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-auto mt-32 px-10 py-10 bg-gray-100">
+        <div class="mx-auto w-max">
+            <button class="px-3 py-2 bg-gray-200 hover:bg-gray-300 focus:outline-none rounded-full"><i class="fab fa-twitter text-blue-500"></i></button>
+            <button class="px-3 py-2 bg-gray-200 hover:bg-gray-300 focus:outline-none rounded-full"><i class="fab fa-instagram text-pink-500"></i></button>
+            <button class="px-3 py-2 bg-gray-200 hover:bg-gray-300 focus:outline-none rounded-full"><i class="fab fa-youtube text-red-500"></i></button>
+        </div>
+    </div>
+        
+</body>
+</html>

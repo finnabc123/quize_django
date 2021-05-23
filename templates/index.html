@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script src="{% static 'js/auto-interval.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'js/infinite.min.js' %}"></script>
+    </head>
+    <body>
+        
+        {% block body_block %}
+            <header class="w-full h-90 block">
+              <!-- <div class="w-full h-full py-20 bg-green-400">
+                <img src="https://image.shutterstock.com/image-photo/programmatic-advertising-concept-youtube-online-600w-1675180834.jpg" alt="" class="block h-full w-full mx-auto">
+              </div> -->
+              <div class="mt-4 px-10 h-96 w-full rounded-xl">
+                <!-- <h1 class="text-xl font-semibold py-2 p-1">News Flash</h1> -->
+                <!-- <video src="media/quiz_video/Khelo aur jeeto!.mp4" alt="images-platform" class="block h-full w-full mx-auto" style="width:100%;" > -->
+                  <video class="c h-full" controls>
+                    <source src="media/quiz_video/Khelo aur jeeto!.mp4" type="video/mp4">
+                  </video>
+                </div>
+          </header>
+            <div class="grid md:grid-cols-2 gap-4 lg:grid-cols-3 grid-cols-1 p-10 text-center font-sans">
+            {% if quiz %}
+            
+                {% for q in quiz %}
+                
+                    <div class="rounded-xl uppercase bg-white text-gray-900 overflow-hidden w-full lg:h-100 lg:w-56 bg-gray-50 shadow-lg mx-auto">
+                        <div class="h-48 pic" style="background-image: url('{{ q.quiz_image.url }}'); background-position: center; background-size: cover;"></div>
+                        <clipPath id="clipping classbg-white">
+                            <circle cx="150" cy="150" r="50" />
+                            <rect x="150" y="150" width="100" height="100" />
+                        </clipPath>
+                        <h1 class="font-semibold mt-4 text-sm name text-lg">{{q.quiz_name}}</h1>
+                        <h1 class="font-thin text-xs text-gray-500 p-3" style="color: red;">Closes: {{q.quiz_dead_line}}</h1>
+                        <h3 class="text-xs text-gray-500 font-normal mr-4 text-2xl">Entry Fee: </h3> 
+                        <h1 class="font-semibold text-black  objects-center text-xl">&#8377;{{q.quiz_price}}</h1>  
+                        <div class="flex justify-center items-center">
+                            <h3 class="text-xs text-gray-500 font-normal mr-4 text-lg">Winning Fee: </h3> 
+                        <h1 class="font-semibold text-black  objects-center text-xl">&#8377;{{q.winning_amoun}}</h1>
+                    </div>
+                        
+                        <a href="{% url 'question' q.id %}"><button class="px-4 py-4 w-full mt-2 focus:outline-none hover:bg-blue-600 text-white bg-blue-500">Play Now!</button></a>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                    <h1 class="c">No Quiz To Show, Check back Later</h1>
+            {% endif %}
+            {% if quiz.has_next %}
+            <a class="infinite-more-link" href="?page={{ quiz.next_page_number }}">More</a>
+          {% endif %}
+        
+          <script>
+            var infinite = new Waypoint.Infinite({
+              element: $('.infinite-container')[0]
+            });
+          </script>
+        </div>
+        
+        
+        <style>
+        .c{
+            margin: auto;
+            color: red;
+        }
+        .name{
+            color: red;
+        }
+        
+        </style>
+        {% endblock body_block %}
+
+    </body>
+    
+</html>

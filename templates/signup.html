@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+{% load tailwind_filters %}
+{% load socialaccount %}
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+        <style>
+            body {
+                font-family: 'Quicksand';
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="h-screen bg-gray-50 divide-y-2 lg:flex">
+            <div
+                class="lg:p-10 transition duration-500 p-6 bg-white shadow-xl lg:mx-auto lg:w-6/12 my-auto lg:w-max text-sm">
+                {% if registered %}
+                <h1>Registration Sucessful</h1>
+                <a href="{% url 'login' %}" class="text-gray-400 text-center">Click Here to Login</a>
+                {% else %}
+                <div class="pt-6 border-b border-gray-100">
+                    <h1 class="text-3xl font-bold">Sign Up</h1>
+                    <h3>Your personal details</h3>
+                </div>
+                <p></p>
+                <div class="container">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ user_form|crispy }}
+                        <button class="px-6 py-3 w-full bg-indigo-700 text-white my-2">Sign Up</button>
+                    </form>
+                    <a href="{% url 'login' %}" class="text-gray-400 text-center">Already have an account?</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="lg:block hidden half w-6/12">
+            </div>
+        </div>
+
+    </body>
+
+</html>

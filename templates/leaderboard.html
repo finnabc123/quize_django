@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App | Leaderboard!</title>
+    <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+{% block body_block %}
+    <div class="h-screen mx-auto bg-gray-100 w-10/12 p-24 pt-24">
+        <h1 class="font-semibold text-2xl text-center my-6">Leaderboard</h1>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="flex flex-col w-max mx-auto">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Rank
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        User
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Category
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Points
+                        </th>
+                        <th class="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                        <td class="px-2 py-4 whitespace-nowrap text-center">
+                            1
+                        </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                            <img class="h-10 w-10 rounded-full" src="../img/card.jpeg" alt="">
+                            </div>
+                            <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">
+                                {{ request.user }}
+                            </div>
+                            </div>
+                        </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">Artificial Intelligence</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap ">
+                            88234
+                        </span>
+                        </td>
+                        <td class="px-5 py-2">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trophy" 
+                            role="img" xmlns="http://www.w3.org/2000/svg" 
+                            viewBox="0 0 576 512"><path fill="currentColor" 
+                            d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z" 
+                            class="bg-gray-500">
+                                </path>
+                            </svg>
+                        </td>
+                    </tr>                    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+  
+    <style>
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+        .half{
+            background-image: url('{% static 'images/half.jpg' %}');
+            background-size: 230%;
+            background-position-y: center;
+            background-position-x: 22%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Include AlphineJS for local uses -->
+    <script src="../js/alpine.min.js"></script>
+{% endblock body_block %}

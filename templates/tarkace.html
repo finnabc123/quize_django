@@ -1,0 +1,43 @@
+<form action="" method="POST"> {% csrf_token %}
+    {% for question in question_list_set.all %}
+      {% if question %}
+       <!--Here begins the question and answers card-->
+        <div class="mx-auto p-6 lg:p-10 bg-gray-100 rounded-xl my-16 w-11/12 lg:w-10/12 mb-auto h-max shadow-inner">
+            <!-- <h1 class="text-center px-4 py-2 bg-gray-200 w-max mx-auto rounded-full shadow-inner">Question {{question.id}}</h1> -->
+            <h2 class="md:text-xl font-semibold text-center my-6">{{question.quiz_question}}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5 text-sm md:text-lg mx-auto">
+                
+            {% for choice in question.answer_set.all %}
+                <label class="labl">
+                    <input type="radio" name="choice" class="appearance-none" id="choice{{ forloop.counter }}" value="{{ choice }}" required>
+                    <div class="px-6 py-2 bg-white transition duration-500 shadow hover:shadow-lg rounded-full"><h3>{{choice}}</h3></div>
+                </label>
+            {% endfor %}
+
+            </div>
+            <!--Pagination buttons wrap-->
+            <!-- <div class="mx-auto px-8 mt-8 mx-auto w-max">
+                <button class="bg-gray-50 shadow focus:outline-none hover:bg-gray-200 hover:shadow-lg transition duration-500 rounded-full px-4 py-2"><i class="fa fa-chevron-left"></i></button>
+                <button class="bg-gray-50 shadow focus:outline-none hover:bg-gray-200 hover:shadow-lg transition duration-500 rounded-full px-4 py-2"><i class="fa fa-chevron-right"></i></button>
+            </div> -->
+            <!--Pagination buttons wrap-->
+        </div>
+      {% else %}
+        <h1>No Questions, Check back later</h1>
+      {% endif %}
+    {% endfor %}
+    <div class="mx-auto px-8 mt-8 mx-auto w-max">
+        <div class="pagination">
+            {% if page_obj.has_next %}
+                <button type="submit" class="bg-gray-50 shadow focus:outline-none hover:bg-gray-200 hover:shadow-lg transition duration-500 rounded-full px-4 py-2"><i class="fa fa-chevron-left"></i>SUBMIT</button>
+                <a href="?page={{ page_obj.next_page_number }}">
+                    <strong>Next</strong>
+                </a>  
+            {% else %}
+                <button type="submit" class="bg-gray-50 shadow focus:outline-none hover:bg-gray-200 hover:shadow-lg transition duration-500 rounded-full px-4 py-2"><i class="fa fa-chevron-left"></i>SUBMIT</button>
+            {% endif %}
+        
+        </div>
+            
+    </div>
+</form>

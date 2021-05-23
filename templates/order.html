@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"> -->
+    <script src="https://kit.fontawesome.com/47101d2035.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title></title>
+    <style>
+        html, body {
+        min-height: 100%;
+        }
+        body, div, form, input, select, p {
+        padding: 0;
+        margin: 0;
+        outline: none;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 14px;
+        color: #666;
+        }
+        h1 {
+        margin: 0;
+        font-weight: 400;
+        }
+        h3 {
+        margin: 12px 0;
+        color: #8ebf42;
+        }
+        .main-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        }
+        form {
+        width: 100%;
+        padding: 20px;
+        }
+        fieldset {
+        border: none;
+        border-top: 1px solid #8ebf42;
+        }
+        .account-details, .personal-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        }
+        .account-details >div, .personal-details >div >div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        }
+        .account-details >div, .personal-details >div, input, label {
+        width: 100%;
+        }
+        label {
+        padding: 0 5px;
+        text-align: right;
+        vertical-align: middle;
+        }
+        input {
+        padding: 10px;
+        vertical-align: right;
+        margin-top: 200;
+        margin-right: 250px;
+        margin-left: 200;
+        text-align: center;
+        }
+        .checkbox {
+        margin-bottom: 10px;
+        }
+        select, .children, .gender, .bdate-block {
+        width: calc(100% + 26px);
+        padding: 5px 0;
+        }
+        select {
+        background: transparent;
+        }
+        .gender input {
+        width: auto;
+        }
+        .gender label {
+        padding: 0 5px 0 0;
+        }
+        .bdate-block {
+        display: flex;
+        justify-content: space-between;
+        }
+        .birthdate select.day {
+        width: 35px;
+        }
+        .birthdate select.mounth {
+        width: calc(100% - 94px);
+        }
+        .birthdate input {
+        width: 38px;
+        vertical-align: unset;
+        }
+        .checkbox input, .children input {
+        width: auto;
+        margin: -2px 10px 0 0;
+        }
+        .checkbox a {
+        color: #8ebf42;
+        }
+        .checkbox a:hover {
+        color: #82b534;
+        }
+        button {
+        width: 100%;
+        padding: 10px 0;
+        margin: 10px auto;
+        border-radius: 15px;
+        border: none;
+        background: #8ebf42;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        }
+        button:hover {
+        background: #82b534;
+        }
+        @media (min-width: 568px) {
+        .account-details >div, .personal-details >div {
+        width: 50%;
+        }
+        label {
+        width: 40%;
+        }
+        input {
+        width: 60%;
+        }
+        select, .children, .gender, .bdate-block {
+        width: calc(60% + 16px);
+        }
+        }
+        .jumbotron {
+            text-align: center;
+        }
+      </style>
+  </head>
+  <body>
+      {% block body_block %}
+            <div class="center">
+      <form action="" method="POST"> {% csrf_token %}
+          <div class="">
+    
+<!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="flex flex-col w-max mx-auto p-10 ">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 ">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="jumbotron">
+                    <h1 class="font-semibold text-2xl text-center my-6 bg">Checkout Payment</h1>
+                    <center><h1>{{quiz}}</h1></center>
+                    <center><h3 class="justify-center">Price is {{quiz.quiz_price}}</h3></center>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+         
+
+          <!---RAZORPAY INTEGRATION HERE-->
+
+          <script src="https://checkout.razorpay.com/v1/checkout.js"
+              data-key="rzp_test_uCzWnrEymDyUU5"
+              data-amount="{{amount}}"
+              data-currency="INR"
+              data-order_id="{{payment.id}}"
+              data-buttontext="Pay with Razorpay"
+              data-name="Quiz"
+              data-description="{{ quiz }} Quiz"
+              data-image="https://example.com/your_logo.jpg"
+              data-prefill.name="PC"
+              data-prefill.email="pc@studygyaan.com"
+              data-theme.color="#G37224">
+              data-button_theme="rzp-dark-standard"
+          </script>
+          <input type="hidden" custom="Hidden Element" name="hidden" class="jumbotron"> 
+      </form>
+  </div>
+  
+      {% endblock body_block %}
+
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.js"
+        integrity="sha512-nIwdJlD5/vHj23CbO2iHCXtsqzdTTx3e3uAmpTm4x2Y8xCIFyWu4cSIV8GaGe2UNVq86/1h9EgUZy7tn243qdA=="
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<style>
+    :root {
+        --primary: #B3241B;
+        --secondary: #E99838;
+    }
+
+    body {
+        font-family: 'Quicksand';
+    }
+
+    .bg-primary {
+        background-color: var(--primary);
+    }
+
+    .text-primary {
+        color: var(--primary);
+    }
+
+    .text-secondary {
+        color: var(--secondary);
+    }
+
+    .btn-bg-trans {
+        background-color: rgba(255, 255, 255, 0.27);
+    }
+
+    .btn-border {
+        border: 3px solid var(--secondary);
+    }
+
+    .glass {
+        box-shadow: 0 0 16px rgba(0, 0, 0, .05);
+        background-color: rgba(255, 255, 255, 0.104);
+        backdrop-filter: blur(3px);
+        text-shadow: 0 0 10px rgba(0, 0, 0, .086);
+    }
+
+    @media screen and (min-width: 768px) {
+        .headText {
+            font-size: 100px;
+            line-height: 38px;
+        }
+    }
+</style>
+
+<body class="bg-gray-50">
+    <nav class="absolute mx-auto w-full z-0 nav-collapsed">
+        <div class="mr-auto px-6 py-6">
+            <a href="{% url 'landing_page' %}"><button
+                    class="border focus:outline-none border-2 px-4 py-2 shadow-lg rounded-full"><i
+                        class="fa fa-2x text-white fa-chevron-left"></i></button></a>
+        </div>
+    </nav>
+
+    <header class="bg-black" style="height: 40vh;">
+        <h1 class="pt-32 font-semibold text-5xl text-white headText text-center">Responsible Gaming</h1>
+    </header>
+
+    <div class="lg:w-8/12 my-4 lg:px-32 px-6 pt-16">
+        <h4>
+            Responsible Gaming
+            Responsible gaming means playing a disciplined game till the point it does not affect your body
+            and mind. Every game has a break-even point. Playing a game as per the quiz rules, and
+            understanding when to stop playing a game is called responsible gaming.
+            <br>
+            <br>
+            <p>Following are the guidelines you should follow as a safe and responsible player:</p>
+            <strong>
+                <p>Do's:</p>
+            </strong>
+            <ul class="list-disc m-2 p-4">
+                <li>
+                    You should play Quizpl with money that you can afford to lose.
+                </li>
+                <li>
+                    You should decide in advance how much money you will spend playing the game and
+                    that money should not be a part of your previous game reserve.
+                </li>
+                <li>
+                    You should complete all your personal and other important tasks before sitting to play so
+                    that you can play the game with a free mind.
+                </li>
+                <li>
+                    You should also decide on the number of hours you will be devoting to the game.
+                </li>
+                <li>
+                    You should always set deposit limits while playing so that you never deposit more than
+                    you can afford to lose.
+                </li>
+            </ul>
+            <strong>
+                <p>Dont's:</p>
+            </strong>
+            <ul class="list-disc m-2 p-4">
+                <li>
+                    You should not play Quizpl by taking loans.
+                </li>
+                <li>
+                    You should not get into a game if you have other planned tasks on hand.
+                </li>
+                <li>
+                    You should not play in a bad, sad or mad mood. This affects your game performance
+                    ultimately leading you in losing money.
+                </li>
+                <li>
+                    You should take a break and pause playing for a while if you have lost money
+                    continuously 3-4 times.
+                </li>
+                <li>
+                    You should not chase losses. Even if you have continuous looses, don’t try to recoup
+                    them at tournaments with higher stakes.
+                </li>
+            </ul>
+        </h4>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html>
+    <head>
+        <title></title>
+    </head>
+    {% block body_block %}
+        <body>
+        <h1>{{quiz.question_set.all}}</h1>
+        <ul>
+            <li>{{question}}</li>
+            <ol>
+                {% for ans in answer %}
+                    <li>{{ans}}</li>
+                {% endfor %}
+            </ol>
+        </ul>
+    </body>
+    {% endblock body_block %}
+        
+</html>

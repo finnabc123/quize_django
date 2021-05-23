@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+        
+    </head>
+    <body>
+        <div class="h-screen bg-gray-50 divide-y-2 lg:flex">
+        <div class="lg:p-10 transition duration-500 p-6 bg-white shadow-xl lg:mx-auto lg:w-6/12 my-auto lg:w-max text-sm">
+            <div class="pt-6 border-b border-gray-100">
+                <h1 class="text-3xl font-bold">Login</h1>
+                <h3>Your account details</h3>
+            </div>
+            <form action="" method="POST"> {% csrf_token %}
+                <div class="pt-4">
+                    <h3 class="font-semibold">Email Address</h3>
+                    <input type="text" placeholder="username@example.com" class="px-4 py-2 shadow-inner bg-gray-100 focus:outline-none my-3 block w-full" name="username" required>
+                    <input type="password" placeholder="Confirm Password" class="px-4 py-2 shadow-inner bg-gray-100 focus:outline-none my-3 block w-full" name="password" required>
+                </div>
+                {% if error %}
+                    <div class="full text-center">
+                    <span class="py-3 text-red-400 mx-auto font-semibold w-full">{{error}}</span>
+                </div>
+                {% else %}
+                <div class="full text-center">
+                   
+                </div>
+                {% endif %}
+                <button class="px-6 py-3 w-full bg-indigo-700 text-white my-2">Login</button>
+            </form>
+            <a href="{% url 'signuppage' %}" class="text-gray-400 text-center">Don't have an account?</a>
+        </div>
+        <div class="lg:block hidden half w-6/12">
+        </div>
+    </div>
+    <style>
+        body{
+            font-family: 'Quicksand';
+        }
+        .half{
+            background-image: url('{% static 'images/half.jpg' %}');
+            background-size: 230%;
+            background-position-y: center;
+            background-position-x: 22%;
+        }
+    </style>
+    </body>
+</html>
